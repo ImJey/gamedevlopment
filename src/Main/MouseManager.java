@@ -117,9 +117,11 @@ public class MouseManager implements MouseListener,MouseMotionListener,MouseWhee
 		
 	}
 
+	
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
+		this.x=e.getX();
+		this.y=e.getY();
 		
 	}
 	public boolean checkXBetween(int a,int b){

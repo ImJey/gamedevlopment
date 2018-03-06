@@ -14,6 +14,7 @@ import Tiles.Tile;
 
 public class Item {
 
+	public static final boolean IR = false;
 	protected float x,y;
 	protected int width,height;
 	protected int id,count;

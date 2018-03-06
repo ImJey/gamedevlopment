@@ -135,4 +135,7 @@ public void addPlayerControl(PlayerControl PC) {
 	D.getFrame().addKeyListener(PC);
 	
 }
+public BufferStrategy getBS(){
+	return bs;
+}
 }

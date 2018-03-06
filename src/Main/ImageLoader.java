@@ -26,4 +26,18 @@ public class ImageLoader {
 	public static Image convert(BufferedImage bi) {
 	    return Toolkit.getDefaultToolkit().createImage(bi.getSource());
 	}
+	public static BufferedImage[] loadSprite(String ImageName) {
+		BufferedImage[] Images=null;
+		BufferedImage Texture=loadImage(ImageName);
+		Images=new BufferedImage[Texture.getHeight()/Texture.getWidth()];
+		int x=0;
+		int y=0;
+		int imgcount=Texture.getHeight()/Texture.getWidth();
+		for(int i=0;i<Texture.getHeight()/Texture.getWidth();i++){
+			Images[i]=Texture.getSubimage(0, y, Texture.getWidth(), Texture.getHeight()/imgcount);
+		y+=Texture.getWidth();
+		}
+		
+		return Images;
+	}
 }

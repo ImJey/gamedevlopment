@@ -33,8 +33,12 @@ public class World {
 		this.worldname=Path;
 		this.rendering = true;
 		this.IM=new ItemManager(handler);
-		
-		this.IM.add(Item.Wood.createNew(300, 300));
+		Item I = Item.Wood.createNew(300, 300);
+		I.setCount(98);
+		this.IM.add(I);
+		Item I2 = Item.Wood.createNew(600, 400);
+		I2.setCount(5);
+		this.IM.add(I2);
 		this.EM=new EntityManager(handler, new Player(handler,0, 0));
 	EM.addEntity(new Tree(handler, 100, 100, Tile.size, Tile.size));
 	System.out.println("Created new WORLD!");

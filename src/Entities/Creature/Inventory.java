@@ -1,5 +1,6 @@
 package Entities.Creature;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -30,7 +31,7 @@ public class Inventory {
 		int n= y+Tile.size/3;
 		for(int i=0;i<Slots;i++){
 			
-			Slot S=new Slot(h,i,b,n);
+			Slot S=new Slot(h,i,b,n,SM);
 			 
 			if(i<=10)
 			{
@@ -50,12 +51,11 @@ public class Inventory {
 	public void tick(){
 //		System.out.println("TIKC!");
 		if(active)
-		for(Slot S: SM.Slots)
-			S.tick();
+		SM.tick();
 		
 		if(h.getM().ScrollUp){
 		Selected+=1;
-		if(Selected>10)
+		if(Selected>=10)
 			Selected=0;
 		h.getM().ScrollUp=false;
 for(Slot S:SM.Slots){
@@ -67,7 +67,7 @@ for(Slot S:SM.Slots){
 		if(h.getM().mouseScrollDown){
 			Selected-=1;
 			if(Selected<0)
-				Selected=10;
+				Selected=9;
 			h.getM().mouseScrollDown=false;
 	for(Slot S:SM.Slots){
 			S.Selected=false;
@@ -97,14 +97,18 @@ for(Slot S:SM.Slots){
 			}
 		}
 		if(active){
+			g.setColor(new Color(222, 180, 90));
 			g.fillRect(x, y, w, hi);
+			g.setColor(Color.BLACK);
 		for(Slot S: SM.Slots){
 			if(S.id<=10){
 				S.x=S.xx;
 				S.y=S.xy;
 //				System.out.println(S.id+":   "+S.x+":"+S.y);
-			}
-			S.render(g);
+			
+			S.render(g);}
+			
+			SM.render(g);
 		}
 		}
 	}
